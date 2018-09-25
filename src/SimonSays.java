@@ -47,7 +47,7 @@ public class SimonSays extends KeyAdapter {
 
 	public void keyPressed(KeyEvent e) {
 		// 15. Make a points variable to track the score.
-		 points = 0;
+		 
 		// 16. If the keyCode matches the imageIndex and "Simon says"
 		if(e.getKeyCode()==imageIndex&&simonSays==true) {
 			points++;
@@ -57,15 +57,12 @@ public class SimonSays extends KeyAdapter {
 			points++;
 			speak("ha ha yes");
 		} 
-		else if(e.getKeyCode()==imageIndex&&simonSays==false) {
-			points--;
-		}
-		else if(e.getKeyCode()!=imageIndex&&simonSays==true) {
-			points--;
+		else {
+			speak("wrong key");
 		}
 		tries = tries+1;
 		if(tries>9) {
-			JOptionPane.showMessageDialog(null, "Your score was " + tries);
+			JOptionPane.showMessageDialog(null, "Your score was " + points + " out of 10");
 			System.exit(0);
 		}
 		frame.dispose();
