@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Random;
@@ -25,7 +26,7 @@ public class TypeOrDie implements KeyListener {
 		label.setText(String.valueOf(currentLetter));
 		label.setFont(label.getFont().deriveFont(28.0f));
 		label.setHorizontalAlignment(JLabel.CENTER);
-		label.addKeyListener(this);
+		frame.addKeyListener(this);
 		frame.pack();
 
 	}
@@ -44,14 +45,26 @@ public class TypeOrDie implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("you typed " + e.getKeyChar());
+		//frame.getContentPane().setOpaque(false);
+		if(e.getKeyChar() == currentLetter) {
+			System.out.println("Correct!");
+			frame.getContentPane().setBackground(Color.green);
+			frame.repaint();
+		}
+		else {
+			frame.getContentPane().setBackground(Color.red);
+			frame.repaint();
+		}			
+
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		currentLetter = generateRandomLetter();
-		label.repaint();
+		label.setText(String.valueOf(currentLetter));
+		frame.repaint();
 	}
 	
 	
