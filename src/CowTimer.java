@@ -1,13 +1,17 @@
+
 /*
  *    Copyright (c) The League of Amazing Programmers 2013-2019
  *    Level 1
  */
 
 import java.applet.AudioClip;
-import java.io.IOException;
+
 import javax.swing.JApplet;
 
 public class CowTimer {
+
+	int num = 10;
+
 	/*
 	 * This is an advanced recipe. There may be more than one line of code for each
 	 * instruction. Work in seconds when testing, then change to minutes
@@ -15,6 +19,9 @@ public class CowTimer {
 
 	public static void main(String[] args) throws InterruptedException {
 		/* 1. Make a CowTimer, set the time and start it. */
+		CowTimer cow = new CowTimer();
+		cow.setTime(10);
+		cow.start();
 
 	}
 
@@ -22,7 +29,7 @@ public class CowTimer {
 
 	public void setTime(int minutes) {
 		this.minutes = minutes;
-		System.out.println("Cow set to " + minutes + " minutes.");
+		System.out.println("Cow set to " + minutes + " seconds.");
 	}
 
 	public void start() throws InterruptedException {
@@ -30,6 +37,13 @@ public class CowTimer {
 		 * 2. Count down the minutes, print the current minute then sleep for 60 seconds
 		 * using Thread.sleep(int milliseconds).
 		 */
+
+		for (int i = 0; i < 10; i++) {
+			num--;
+			System.out.println(num + " seconds left.");
+			Thread.sleep(1000);
+		}
+		playSound("moo.wav");
 
 		/*
 		 * 3. When the timer is finished, use the playSound method to play a moo sound.
